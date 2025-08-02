@@ -11,12 +11,14 @@ load_dotenv()
 SALAD_API_KEY        = os.getenv("SALAD_API_KEY","")
 ORGANIZATION_NAME    = os.getenv("ORGANIZATION_NAME","")
 PROJECT_NAME         = os.getenv("PROJECT_NAME","")
-CONTAINER_GROUP_NAME = os.getenv("CONTAINER_GROUP_NAME","") 
+
 
 ########################################
 ########################################
 
-def deploy(image: str, tag: str):
+def deploy(image: str):
+
+    tag = image.split(":")[-1]  # Extract the tag from the image name
 
     sdk = SaladCloudSdk(
         api_key=SALAD_API_KEY, 
@@ -76,7 +78,6 @@ def deploy(image: str, tag: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--image", required=True)
-    parser.add_argument("--tag", required=True)
     
     args = parser.parse_args()
-    deploy(args.image, args.tag)
+    deploy(args.image)
