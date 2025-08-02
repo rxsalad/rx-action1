@@ -16,6 +16,7 @@ EXPOSE 8888
 
 # Set the default command 
 #CMD ["sleep", "infinity"]
+
 CMD ["python", "hello.py"]
 
 
