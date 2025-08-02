@@ -30,7 +30,6 @@ def deploy(image: str):
                 display_name=tag,
                 container={
                     "image": image,
-                    "tag": tag,
                     "resources": {
                         "cpu": 16,
                         "memory": 24576,
