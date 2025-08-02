@@ -4,8 +4,7 @@ on:
   push:
     paths:
       - 'Dockerfile'
-      - 'hello.py'
-      - 'salad_deploy.py'
+      - '*.py'
     branches:
       - main
 
