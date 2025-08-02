@@ -15,6 +15,7 @@ COPY hello.py Dockerfile /app/
 EXPOSE 8888
 
 # Set the default command 
-CMD ["python", "hello.py"]
 #CMD ["sleep", "infinity"]
+CMD ["python", "hello.py"]
+
 
