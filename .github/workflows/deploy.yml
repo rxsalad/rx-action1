@@ -53,4 +53,5 @@ jobs:
         env:
           SALAD_API_KEY: ${{ secrets.SALAD_API_KEY }}
         run: |
-          python salad_deploy.py --image $IMAGE_NAME:$TAG
+          export IMAGE_NAME_TAG=$IMAGE_NAME:$TAG
+          python salad_deploy.py

@@ -8,20 +8,21 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # SaladCloud parameters
-SALAD_API_KEY        = os.getenv("SALAD_API_KEY","")
-ORGANIZATION_NAME    = os.getenv("ORGANIZATION_NAME","")
-PROJECT_NAME         = os.getenv("PROJECT_NAME","")
-
+SALAD_API_KEY        = os.getenv("SALAD_API_KEY")
+ORGANIZATION_NAME    = os.getenv("ORGANIZATION_NAME")
+PROJECT_NAME         = os.getenv("PROJECT_NAME")
+IMAGE_NAME           = os.getenv("IMAGE_NAME_TAG")
+TAG                  = IMAGE_NAME.split(":")[-1] 
 
 ########################################
 ########################################
 
-def deploy(image: str):
+def deploy():
 
-    tag = image.split(":")[-1]  # Extract the tag from the image name
+     # Extract the tag from the image name
 
-    print("Image and Tag:")
-    print(image,tag)
+    print("-----> Image and Tag")
+    print(IMAGE_NAME,TAG)
 
     sdk = SaladCloudSdk(
         api_key=SALAD_API_KEY, 
@@ -29,10 +30,10 @@ def deploy(image: str):
     )
 
     request_body = ContainerGroupCreationRequest(
-                name=tag,        
-                display_name=tag,
+                name=TAG,        
+                display_name=TAG,
                 container={
-                    "image": image,
+                    "image": IMAGE_NAME,
                     "resources": {
                         "cpu": 16,
                         "memory": 24576,
@@ -66,7 +67,7 @@ def deploy(image: str):
            },
        )
 
-    print("Request:")
+    print("-----> Request")
     print(request_body)
 
 
@@ -79,8 +80,5 @@ def deploy(image: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--image", required=True)
-    
-    args = parser.parse_args()
-    deploy(args.image)
+
+    deploy()
