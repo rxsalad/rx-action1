@@ -21,8 +21,8 @@ def deploy():
 
      # Extract the tag from the image name
 
-    print("-----> Image and Tag")
-    print(IMAGE_NAME,TAG)
+    # print("-----> Image and Tag")
+    # print(IMAGE_NAME,TAG)
 
     sdk = SaladCloudSdk(
         api_key=SALAD_API_KEY, 
@@ -67,16 +67,17 @@ def deploy():
                }
        )
 
-    print("-----> Request")
-    print(request_body)
-
+    # Publicly Accessible
+    # print("-----> Request")
+    # print(request_body)
 
     result = sdk.container_groups.create_container_group(
                 request_body=request_body,
                 organization_name=ORGANIZATION_NAME,
                 project_name=PROJECT_NAME
         )
-    print(result)
+    
+    # print(result)
 
 
 if __name__ == "__main__":
