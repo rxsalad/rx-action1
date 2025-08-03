@@ -52,6 +52,8 @@ jobs:
       - name: Deploy via SaladCloud SDK
         env:
           SALAD_API_KEY: ${{ secrets.SALAD_API_KEY }}
+          ORGANIZATION_NAME: ${{ secrets.ORGANIZATION_NAME }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
         run: |
           export IMAGE_NAME_TAG=$IMAGE_NAME:$TAG
           python salad_deploy.py
