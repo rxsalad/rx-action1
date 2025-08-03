@@ -55,7 +55,7 @@ def deploy():
                 autostart_policy=True,
                 restart_policy="always",
                 replicas=1,
-                country_codes=["us","ca","mx"   ],
+                country_codes=["us","ca","mx"],
                 networking = {
                   "protocol": "http",
                   "port": 8888,
@@ -64,7 +64,7 @@ def deploy():
                   "single_connection_limit": False,
                   "client_request_timeout": 100000,
                   "server_response_timeout": 100000
-           },
+               }
        )
 
     print("-----> Request")
