@@ -20,6 +20,9 @@ def deploy(image: str):
 
     tag = image.split(":")[-1]  # Extract the tag from the image name
 
+    print("Image and Tag:")
+    print(image,tag)
+
     sdk = SaladCloudSdk(
         api_key=SALAD_API_KEY, 
         timeout=10000
@@ -63,7 +66,8 @@ def deploy(image: str):
            },
        )
 
-    #print(request_body)
+    print("Request:")
+    print(request_body)
 
 
     result = sdk.container_groups.create_container_group(
