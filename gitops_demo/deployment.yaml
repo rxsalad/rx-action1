@@ -28,8 +28,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: myapp
-  name: myapp
+    app: gitops-myapp
+  name: gitops-myapp
 spec:
   ports:
   - port: 80
@@ -37,7 +37,7 @@ spec:
     targetPort: 5000
     nodePort: 30088
   selector:
-    app: myapp
+    app: gitops-myapp
   type: NodePort
 status:
   loadBalancer: {}
