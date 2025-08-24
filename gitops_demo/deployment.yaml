@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitops-myapp
+  name: gitops-myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gitops-myapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gitops-myapp
+    spec:
+      containers:
+      - image: richardxgf/gitopstest:5
+        name: gitopstest
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myapp
+  name: myapp
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+    nodePort: 30088
+  selector:
+    app: myapp
+  type: NodePort
+status:
+  loadBalancer: {}
