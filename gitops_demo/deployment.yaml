@@ -1,3 +1,5 @@
+# https://hub.docker.com/repository/docker/richardxgf/gitopstest/general
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,7 +20,7 @@ spec:
         app: gitops-myapp
     spec:
       containers:
-      - image: richardxgf/gitopstest:5
+      - image: richardxgf/gitopstest:2 # 1~5
         name: gitopstest
         resources: {}
 status: {}
